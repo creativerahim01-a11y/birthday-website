@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise for Nashrah!</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        text-align: center;
+        background: #ffe6f0;
+        overflow: hidden;
+        color: #ff4da6;
+    }
+
+    /* Surprise button */
+    #surprise {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #ff69b4;
+        color: white;
+        font-size: 2em;
+        padding: 20px 40px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(255,77,166,0.3);
+        transition: transform 0.2s;
+    }
+    #surprise:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Birthday content */
+    #birthdayContent {
+        display: none;
+    }
+    h1 {
+        font-size: 3em;
+        margin-top: 50px;
+        background: linear-gradient(45deg, #ff4da6, #ffb6c1, #ff69b4);
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: rainbow 5s linear infinite;
+    }
+    @keyframes rainbow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .cake {
+        font-size: 5em;
+        display: inline-block;
+        animation: bounce 1s infinite alternate;
+    }
+    @keyframes bounce {
+        from { transform: translateY(0); }
+        to { transform: translateY(-20px); }
+    }
+
+    .wish {
+        background-color: #fff0f5;
+        display: inline-block;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(255, 77, 166, 0.3);
+        margin-top: 30px;
+        font-size: 1.3em;
+    }
+
+    /* Balloons */
+    .balloon {
+        position: absolute;
+        bottom: -150px;
+        font-size: 3em;
+        animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+        from { transform: translateY(0) rotate(0deg); }
+        to { transform: translateY(-1200px) rotate(360deg); }
+    }
+
+    /* Confetti */
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        opacity: 0.8;
+        animation: confettiFall linear infinite;
+    }
+    @keyframes confettiFall {
+        from { transform: translateY(-10px) rotate(0deg); }
+        to { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Hearts */
+    .heart {
+        position: absolute;
+        font-size: 2em;
+        color: pink;
+        animation: floatHeart linear infinite;
+        opacity: 0.7;
+    }
+    @keyframes floatHeart {
+        0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0.7; }
+        50% { transform: translateY(-500px) scale(1.2) rotate(180deg); opacity: 1; }
+        100% { transform: translateY(-1000px) scale(0.8) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Surprise Button -->
+<button id="surprise">🎁 Click for your surprise, Nashu 🎁</button>
+
+<!-- Birthday Content -->
+<div id="birthdayContent">
+    <h1>🎉 Happy Birthday Nashu! 🎉</h1>
+    <p class="cake">🎂</p>
+    <div class="wish">
+        <p>Happy Birthday pretty girl Nashu 🎂
+You are the melody of my heart, the smile that brightens my days, and the softness in every moment I cherish. May your birthday be as magical, sweet, and beautiful as you are. Today and always, you deserve every bit of happiness.
+
+My sweetest Nashu, On your special day I want to wrap you in warm wishes and the biggest smiles. You make ordinary days sparkle and you sprinkle kindness wherever you go. Every laugh you share and every quiet moment you brighten means the world. May your year ahead be full of dreamy moments, small adventures, and surprises that make your heart skip. Keep shining, keep being your adorable, brave, beautiful self — I'm so lucky to know you. Happy Birthday, Nashu! 🎂💖❤️ Wishing you laughter that bubbles up, hugs that last a little longer, and a year where your biggest dreams start coming true. You are loved, cherished, and endlessly cute.</p>
+        <p>Wishing you endless happiness, sparkles of joy, and a year as amazing as you are! 🌸✨</p>
+        <p>Enjoy every bite of your cake and every hug that comes your way! Happy Birthday </p>
+    </div>
+</div>
+
+<script>
+    const button = document.getElementById('surprise');
+    const content = document.getElementById('birthdayContent');
+
+    button.addEventListener('click', () => {
+        // Hide button
+        button.style.display = 'none';
+
+        // Show birthday content
+        content.style.display = 'block';
+
+        // Change background to festive pink gradient
+        document.body.style.background = 'linear-gradient(to right, #ffe6f0, #fff0f5)';
+
+        // Create balloons
+        for (let i = 0; i < 5; i++) {
+            let balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            balloon.innerHTML = '🎈';
+            document.body.appendChild(balloon);
+        }
+
+        // Create confetti
+        for (let i = 0; i < 100; i++) {
+            let confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            confetti.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            confetti.style.width = confetti.style.height = (Math.random() * 10 + 5) + 'px';
+            document.body.appendChild(confetti);
+        }
+
+        // Create hearts
+        for (let i = 0; i < 30; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 2 + 1) + 'em';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.innerHTML = '💖';
+            document.body.appendChild(heart);
+        }
+
+        // Add background music
+        const audio = document.createElement('audio');
+        audio.autoplay = true;
+        audio.loop = true;
+        audio.src = 'https://www.bensound.com/bensound-music/bensound-happyrock.mp3'; // Free music source
+        document.body.appendChild(audio);
+    });
+</script>
+
+</body>
+</html>
